@@ -3,7 +3,6 @@ import datetime
 import pendulum
 
 from airflow.providers.standard.operators.bash import BashOperator
-from airflow.providers.standard.operators.empty import EmptyOperator
 from airflow.sdk import DAG
 
 with DAG(
