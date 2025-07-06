@@ -9,7 +9,6 @@ with DAG(
     schedule="0 2 * * 1",
     start_date=pendulum.datetime(2025, 6, 1, tz="ASIA/Seoul"),
     catchup=False,
-    tags=["example"],
 ) as dag:
     @task(task_id="python_task_1")
     def print_context(some_input):
