@@ -2,7 +2,7 @@ import datetime
 import pendulum
 from airflow.sdk import DAG
 from airflow.providers.standard.operators.bash import BashOperator
-from 
+
 
 with DAG(
     dag_id="dags_bash_with_macro_eg1",
