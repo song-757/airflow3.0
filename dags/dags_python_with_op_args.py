@@ -12,7 +12,7 @@ with DAG(
     dagrun_timeout=datetime.timedelta(minutes=60),
    
 ) as dag:
-    task_get_sftp =  PythonOperator(
+    regist_t1 =  PythonOperator(
         task_id = 'regist_t1',
         python_callable=regist
     )
