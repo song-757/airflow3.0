@@ -1,7 +1,6 @@
 import datetime
 import pendulum
 from airflow.sdk import DAG
-from airflow.providers.standard.operators.python import PythonOperator
 from airflow.decorators import task
 
 with DAG(
@@ -18,7 +17,7 @@ with DAG(
               'end_date':'{{(data_interval_end.in_timezone("Asia/Seoul").replace(day=1)+macros.dateutil.relativedelta.relativedelta(days=-1)) | ds}}'
           }
     ) 
-    def get_datetiem_macro(**kwargs):
+    def get_datetime_macro(**kwargs):
         templates_dict = kwargs.get('templates_dict')   or {}
         if templates_dict:
             start_date = templates_dict.get('start_date') or 'start_date 없음'
@@ -39,3 +38,4 @@ with DAG(
         print(prev_month_day_last.strftime('%Y-%m-%d'))
 
 
+    get_datetime_macro() >> get_datetime_calc()
