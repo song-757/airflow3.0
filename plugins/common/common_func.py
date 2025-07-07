@@ -15,5 +15,5 @@ def regist2(name,sex,*args, **kwargs):
 
     if email:
         print(email)
-    if phone(phone):
+    if phone:
         print(phone)
