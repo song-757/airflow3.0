@@ -15,18 +15,18 @@ with DAG(
     bash_push = BashOperator(
         task_id = 'bash_push',
         bash_command="echo START && "
-                        " echo XCOM_PUSHED &&"
-                        #"{{ti.xcom_push(key='bash_push',value='first_bash_message')}} && "
-                        " echo first_bash_message &&"
+                        " echo XCOM_PUSHED "
+                        "{{ti.xcom_push(key='bash_push',value='first_bash_message')}} && "
+                        # " echo first_bash_message &&"
                         " echo COMPLATE ",
-        do_xcom_push=True                
+        # do_xcom_push=True                
     )
 
     bash_pull = BashOperator(
         task_id = 'bash_pull',
         env = {
-            # 'PUSHED_VALUE':"{{ti.xcom_pull(key='bash_push')}}",
-            'PUSHED_VALUE':"{{ti.xcom_pull(task_ids='bash_push')}}",
+            'PUSHED_VALUE':"{{ti.xcom_pull(key='bash_push')}}",
+            # 'PUSHED_VALUE':"{{ti.xcom_pull(task_ids='bash_push')}}",
             'RETURN_VALUE':"{{ti.xcom_pull(task_ids='bash_push')}}"
         },
         bash_command="echo $PUSHED_VALUE && echo $RETURN_VALUE",
