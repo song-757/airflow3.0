@@ -18,7 +18,7 @@ with DAG(
                         " echo XCOM_PUSHED &&"
                         #"{{ti.xcom_push(key='bash_push',value='first_bash_message')}} && "
                         " echo first_bash_message &&"
-                        " echo COMPLATE "
+                        " echo COMPLATE ",
         do_xcom_push=True                
     )
 
