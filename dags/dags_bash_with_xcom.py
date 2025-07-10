@@ -29,7 +29,7 @@ with DAG(
             'PUSHED_VALUE':"{{ti.xcom_pull(task_ids='bash_push')}}",
             'RETURN_VALUE':"{{ti.xcom_pull(task_ids='bash_push')}}"
         },
-        bash_command="echo $PUSHED_VALUE && & $RETURN_VALUE",
+        bash_command="echo $PUSHED_VALUE && $RETURN_VALUE",
         do_xcom_push = False
     )
     
