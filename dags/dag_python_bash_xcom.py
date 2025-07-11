@@ -29,4 +29,6 @@ with DAG(
         bash_command="echo $STATUS && echo $DATA && echo $OPTIONS "
     )
 
-    python_push_xcom >> bash_pull
+    push_task = python_push_xcom()
+
+    push_task >> bash_pull
