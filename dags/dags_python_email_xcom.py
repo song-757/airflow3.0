@@ -13,7 +13,7 @@ with DAG(
     dagrun_timeout=datetime.timedelta(minutes=60),
    
 ) as dag:
-    @task(task_id='some_lgoic')
+    @task
     def some_lgoic(**kwargs):
         from random import choice
         return choice('Success','Fail')
@@ -27,4 +27,6 @@ with DAG(
 
     )    
 
-    some_lgoic >> send_email
+    python_push = some_lgoic();
+
+    python_push >> send_email
