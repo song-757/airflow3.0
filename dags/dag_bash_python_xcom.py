@@ -31,6 +31,6 @@ with DAG(
         print('status_value:'+str(status_value))
         print('return_value:'+str(return_value))
     
-p   python_pull = python_pull_xcom()
+    python_pull = python_pull_xcom()
 
     bash_push >> python_pull
