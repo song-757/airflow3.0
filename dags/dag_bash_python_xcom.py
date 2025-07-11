@@ -22,7 +22,7 @@ with DAG(
     )
 
 
-    @task
+    @task(task_id='python_pull_xcom')
     def python_pull_xcom(**kwargs):
         ti = kwargs['ti']
         status_value = ti.xcom_pull(key="bash_pushed")
