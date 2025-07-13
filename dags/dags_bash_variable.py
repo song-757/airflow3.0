@@ -12,15 +12,15 @@ with DAG(
     catchup=False,
     dagrun_timeout=datetime.timedelta(minutes=60),
 ) as dag:
-    var_value = Variable.get("sameple_key")
+    var_value = Variable.get("sample_key")
 
-    bash_var_1 = BashOperator(
-        task_id ="bash_var_1"
+    bash_var_1 = BashOperator (
+        task_id ="bash_var_1",
         bash_command =f"echo variable:{var_value}"
     )
 
-    bash_var_2 = BashOperator(
-        task_id ="bash_var_2"
+    bash_var_2 = BashOperator (
+        task_id ="bash_var_2",
         bash_command =f"echo variable:{{var.value.sample_key}}"
     )
 
