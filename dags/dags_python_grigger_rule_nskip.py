@@ -15,7 +15,7 @@ with DAG(
 ) as dag:
     @task.branch(task_id = 'branching')
     def random_branch():
-        import rand
+        import random
 
         item_list =['A','B','C']
         selected_item = random.choice(item_list)
