@@ -13,16 +13,19 @@ with DAG(
     catchup=False,
     dagrun_timeout=datetime.timedelta(minutes=60),
 ) as dag:
+    @task.branch(task_id = 'branching')
     def random_branch():
-        import random
+        import rand
 
         item_list =['A','B','C']
-            selected_item = random.choice(item_list)
+        selected_item = random.choice(item_list)
 
-            if selected_item  == 'A':
-                return 'task_a'
-            elif selected_item  in ['B','C']:
-                return ['task_b','task_c']
+        if selected_item  == 'A':
+            return 'task_a'
+        elif selected_item   == 'B':
+            return 'task_b'
+        elif selected_item   == 'C':
+            return 'task_c'    
 
     task_a = BashOperator(
         task_id = 'task_a',

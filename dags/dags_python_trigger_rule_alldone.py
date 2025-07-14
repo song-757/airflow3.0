@@ -26,7 +26,7 @@ with DAG(
     def python_upstream_2():
         print('정상처리')
 
-    @task(task_id='python_downStream' trigger_rule 'all_done')
+    @task(task_id='python_downStream', trigger_rule = 'all_done')
     def python_downStream():
         print('정상처리')    
 
