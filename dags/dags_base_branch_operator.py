@@ -51,3 +51,4 @@ with DAG(
 
     custom_base_branch_operator = CustomBaseBranchOperator(task_id='base_branch_operator' )
     
+    custom_base_branch_operator >> [task_a,task_b,task_c] 
