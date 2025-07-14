@@ -34,7 +34,7 @@ with DAG(
 
     @task(task_id='task_b')
     def task_b():
-        raise AirflowException('python_upstream_1 exception')
+        print('정상처리')
 
     @task(task_id='task_c')
     def task_c():
