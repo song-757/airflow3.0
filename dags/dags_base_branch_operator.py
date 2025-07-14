@@ -50,4 +50,4 @@ with DAG(
     )
 
     custom_base_branch_operator = CustomBaseBranchOperator(task_id='base_branch_operator' )
-    custom_base_branch_operator.choose_branch()
+    
