@@ -14,8 +14,8 @@ with DAG(
     dagrun_timeout=datetime.timedelta(minutes=60),
 ) as dag:
     def inner_func(**kwargs):
-    msg = kwargs.get('msg') or ''
-    print(msg)    
+        msg = kwargs.get('msg') or ''
+        print(msg)    
 
     @task_group(group_id="first_group")
     def group_1():
