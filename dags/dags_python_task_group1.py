@@ -30,11 +30,11 @@ with DAG(
         inner_task_2 = PythonOperator(
             task_id = 'inner_task_2',
             python_callable =inner_func,
-            op_kwargs={'msg','첫번째 task_group내 두번째 Task 입니다.'}
+            op_kwargs={'msg':'첫번째 task_group내 두번째 Task 입니다.'}
             
         )
-        inner_task_1 >> inner_task_2
-    with TaskGroup(group_id='',tooltip ='두번째그룹입니다') as group_2:    
+        inner_task_1() >> inner_task_2
+    with TaskGroup(group_id='second_group',tooltip ='두번째그룹입니다') as group_2:    
         @task(task_id = 'inner_task_1')
         def inner_task_1(**kwargs):
             print('두번째 task_group내 첫번째 Task 입니다. ')
@@ -42,8 +42,8 @@ with DAG(
         inner_task_2 = PythonOperator(
             task_id = 'inner_task_2',
             python_callable =inner_func,
-            op_kwargs={'msg','두번째 task_group내 두번째 Task 입니다.'}
+            op_kwargs={'msg':'두번째 task_group내 두번째 Task 입니다.'}
         )
-        inner_task_1 >> inner_task_2
+        inner_task_1() >> inner_task_2
 
     group_1 >> group_2
