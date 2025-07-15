@@ -2,7 +2,7 @@ import datetime
 import pendulum
 from airflow.sdk import DAG
 
-from airflow.providers.standard.operators.empty import EmptyOperatorOperator
+from airflow.providers.standard.operators.empty import EmptyOperator
 from airflow.utils.edgemodifier import Label
 
 
