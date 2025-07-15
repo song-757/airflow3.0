@@ -29,8 +29,9 @@ with DAG(
 
         inner_task_2 = PythonOperator(
             task_id = 'inner_task_2',
-            python_callable =inner_func
-            print('첫번째 task_group내 두번째 Task 입니다. ')
+            python_callable =inner_func,
+            op_kwargs={'msg','첫번째 task_group내 두번째 Task 입니다.'}
+            
         )
         inner_task_1 >> inner_task_2
     with TaskGroup(group_id='',tooltip ='두번째그룹입니다') as group_2:    
