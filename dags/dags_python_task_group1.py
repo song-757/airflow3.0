@@ -20,7 +20,7 @@ with DAG(
 
     @task_group(group_id="first_group")
     def group_1():
-        '''Task group 데커레이터를 이용한 첫번째 그룹입니다.'''
+        '''Task group 데커레이터를 이용한 첫번째 그룹입니다.'''                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
         
         
         @task(task_id = 'inner_task_1')
@@ -28,7 +28,7 @@ with DAG(
             print('첫번째 task_group내 첫번째 Task 입니다. ')
 
         inner_task_2 = PythonOperator(
-            task_id = 'inner_task_2'
+            task_id = 'inner_task_2',
             python_callable =inner_func
             print('첫번째 task_group내 두번째 Task 입니다. ')
         )
