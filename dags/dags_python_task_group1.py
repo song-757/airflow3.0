@@ -46,4 +46,4 @@ with DAG(
         )
         inner_task_1() >> inner_task_2
 
-    group_1 >> group_2
+    group_1() >> group_2
