@@ -15,29 +15,29 @@ with DAG(
     dagrun_timeout=datetime.timedelta(minutes=60),
 ) as dag: 
 
-    empty_1 = EmptyOperatorOperator(
+    empty_1 = EmptyOperator(
         task_id ='empty_1'
     )
 
-    empty_2 = EmptyOperatorOperator(
+    empty_2 = EmptyOperator(
         task_id ='empty_2'
     )
 
     empty_1 >> Label('1과 2사이') >> empty_2
 
-    empty_3 = EmptyOperatorOperator(
+    empty_3 = EmptyOperator(
         task_id ='empty_3'
     )
 
-    empty_4 = EmptyOperatorOperator(
+    empty_4 = EmptyOperator(
         task_id ='empty_4'
     )
 
-    empty_4 = EmptyOperatorOperator(
+    empty_5 = EmptyOperator(
         task_id ='empty_5'
     )
 
-    empty_4 = EmptyOperatorOperator(
+    empty_6 = EmptyOperator(
         task_id ='empty_6'
     )
 
