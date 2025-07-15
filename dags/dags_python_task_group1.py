@@ -39,9 +39,9 @@ with DAG(
             print('두번째 task_group내 첫번째 Task 입니다. ')
 
         inner_task_2 = PythonOperator(
-            task_id = 'inner_task_2'
-            python_callable =inner_func
-            print('두번째 task_group내 두번째 Task 입니다. ')
+            task_id = 'inner_task_2',
+            python_callable =inner_func,
+            op_kwargs={'msg','두번째 task_group내 두번째 Task 입니다.'}
         )
         inner_task_1 >> inner_task_2
 
