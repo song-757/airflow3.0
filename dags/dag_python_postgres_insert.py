@@ -29,7 +29,7 @@ with DAG(
     insert_postgress = PythonOperator(
         task_id ='insert_postgress',
         python_callable= insert_postgress,
-        op_args=['172.28.0.3','5432','song','song'] 
+        op_args=['172.28.0.3','5432','song','song','song'] 
     )
 
 
