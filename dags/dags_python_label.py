@@ -1,25 +1,44 @@
 import datetime
 import pendulum
-from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.sdk import DAG
 
-def insert_postgress(ip, port, dbname, user, pwd, **kwargs):
-    print('실행되나')
+from airflow.providers.standard.operators.empty import EmptyOperator
+from airflow.utils.edgemodifier import Label
 
-# ✅ 전역에 선언!
-dag = DAG(
-    dag_id="dag_python_postgres_insert",
+
+from airflow.decorators import task
+with DAG(
+    dag_id="dags_python_label",
     schedule="30 6 * * *",
     start_date=pendulum.datetime(2025, 6, 24, tz="Asia/Seoul"),
     catchup=False,
     dagrun_timeout=datetime.timedelta(minutes=60),
-)
+) as dag: 
 
-with dag:
-    insert_postgress_task = PythonOperator(
-        task_id='insert_postgress_task',
-        python_callable=insert_postgress,
-        op_args=['172.28.0.3', '5432', 'song', 'song', 'song']
+    empty_1 = EmptyOperator(
+        task_id ='empty_1'
     )
 
-    insert_postgress_task
+    empty_2 = EmptyOperator(
+        task_id ='empty_2'
+    )
+
+    empty_1 >> Label('1과 2사이') >> empty_2
+
+    empty_3 = EmptyOperator(
+        task_id ='empty_3'
+    )
+
+    empty_4 = EmptyOperator(
+        task_id ='empty_4'
+    )
+
+    empty_5 = EmptyOperator(
+        task_id ='empty_5'
+    )
+
+    empty_6 = EmptyOperator(
+        task_id ='empty_6'
+    )
+
+    empty_2 >> Label('Start Branch') >> [empty_3,empty_4,empty_5] >> Label('End Branch') >> empty_6
