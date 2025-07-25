@@ -14,16 +14,20 @@ with DAG(
     def insert_postgress(postgres_conn_id,**kwargs):
         from airflow.providers.postgres.hooks.postgres import PostgresHook
         from contextlib import closing
-        postgres_hook = PostgresHook(postgres_conn_id)
-        with closing(postgres_hook.get_conn())as conn:
-            with closing(conn.cursor()) as cursor:
-                dag_id = kwargs.get('ti').dag_id
-                task_id = kwargs.get('ti').task_id
-                run_id = kwargs.get('ti').run_id
-                msg='insert 수행 hook'
-                sql='insert into py_opr_drct_insrt values(%s,%s,%s,%s);'
-                cursor.execute(sql,(dag_id,task_id,run_id,msg))
-                conn.commit()
+        try:
+            postgres_hook = PostgresHook(postgres_conn_id)
+            with closing(postgres_hook.get_conn())as conn:
+                with closing(conn.cursor()) as cursor:
+                    dag_id = kwargs.get('ti').dag_id
+                    task_id = kwargs.get('ti').task_id
+                    run_id = kwargs.get('ti').run_id
+                    msg='insert 수행 hook'
+                    sql='insert into py_opr_drct_insrt values(%s,%s,%s,%s);'
+                    cursor.execute(sql,(dag_id,task_id,run_id,msg))
+                    conn.commit()
+        except Exception as e:
+            kwargs['ti'].xcom_push(key='error', value=str(e))
+            raise
         
 
     insert_postgress_hook = PythonOperator(
