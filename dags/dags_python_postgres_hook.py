@@ -29,7 +29,7 @@ with DAG(
     insert_postgress_hook = PythonOperator(
         task_id ='insert_postgress_hook',
         python_callable= insert_postgress,
-        op_kwargs=['postgres_conn_id': 'conn-db-postgres-custom'] 
+        op_kwargs={'postgres_conn_id': 'conn-db-postgres-custom'} 
     )
 
 
