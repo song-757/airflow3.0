@@ -14,7 +14,7 @@ with DAG(
 ) as dag:
     task_cyckle_station_info = HttpOperator(
         task_id = 'task_cyckle_station_info',
-        http_conn_id = 'openapi.seou.go.kr',
+        http_conn_id = 'seoul_public_data_http_1',
         endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/tbCycleStationInfo/1/10',
         method = 'GET',
         headers={
