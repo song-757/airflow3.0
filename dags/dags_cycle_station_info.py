@@ -13,7 +13,7 @@ with DAG(
     dagrun_timeout=datetime.timedelta(minutes=60),
 ) as dag:
     task_cyckle_station_info = HttpOperator(
-        task_id = task_cyckle_station_info',
+        task_id = 'task_cyckle_station_info',
         http_conn_id = 'openapi.seou.go.kr',
         endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/tbCycleStationInfo/1/10',
         method = 'GET',
@@ -23,5 +23,4 @@ with DAG(
             'Accept':'*/*'
         }
     )
-
     task_cyckle_station_info
