@@ -18,7 +18,7 @@ with DAG(
         endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/tbCycleStationInfo/1/10',
         method = 'GET',
         heaaders={
-            'Content-Type','application/json',
+            'Content-Type': 'application/json',
             'charset':'utf-8',
             'Accept':'*/*'
         }
