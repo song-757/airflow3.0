@@ -6,7 +6,7 @@ from airflow.providers.standard.operators.python import PythonOperator
 from airflow.providers.http.operators.http import HttpOperator
 
 with DAG(
-    dag_id="dags_cycle_station_info.py",
+    dag_id="dags_cycle_station_info",
     schedule="30 6 * * *",
     start_date=pendulum.datetime(2025, 6, 24, tz="Asia/Seoul"),
     catchup=False,
