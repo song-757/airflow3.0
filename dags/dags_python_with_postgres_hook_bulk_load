@@ -29,4 +29,4 @@ with DAG(
     )
 
 
-    insert_postgress_hook
+    insert_postgress_hook_bulk_load
