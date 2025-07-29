@@ -12,7 +12,7 @@ with DAG(
     catchup=False,
     dagrun_timeout=datetime.timedelta(minutes=60),
 ) as dag:
-    def insert_postgress(postgres_conn_id,tbl_nm,**kwargs):
+    def insert_postgress(postgres_conn_id,tbl_nm, file_nm, **kwargs):
         postgres_hook = PostgresHook(postgres_conn_id)
         postgres_hook.bulk_load(tbl_nm, file_nm)
      
