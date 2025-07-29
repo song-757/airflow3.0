@@ -15,18 +15,14 @@ with DAG(
     def insert_postgress(postgres_conn_id,tbl_nm,**kwargs):
         postgres_hook = PostgresHook(postgres_conn_id)
         postgres_hook.bulk_load(tbl_nm, file_nm)
-
-        
-
+     
     insert_postgress_hook_bulk_load = PythonOperator(
         task_id ='insert_postgress_hook_bulk_load',
         python_callable= insert_postgress,
         op_kwargs={
             'postgres_conn_id': 'conn-db-postgres-custom'
             ,'tbl_nm':'Tbcorona19CountStatus_bulk1'
-            ,'file_nm':'/opt/airflow/files/TbCorona19CountStatus/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash}}'
+            ,'file_nm':'/opt/airflow/files/TbCorona19CountStatus/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash}}/Tbcorona19CountStatus.csv'
         } 
     )
-
-
     insert_postgress_hook_bulk_load
