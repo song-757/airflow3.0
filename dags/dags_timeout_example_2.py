@@ -20,24 +20,25 @@ with DAG(
     schedule=None,
     dagrun_timeout=timedelta(minutes=1),
     default_args={
-        'execution_timeout': timedelta(seconds=40)
+        'execution_timeout': timedelta(seconds=40),
         'email_on_failure': True,
         'email' : email_list
     }
 ) as dag:
     bash_sleep_35 = BashOperator(
         task_id = 'bash_sleep_35',
-        task_command = 'sleep 35',
+        bash_command = 'sleep 35',
     )
 
     bash_sleep_36 = BashOperator(
         trigger_rule= 'all_done',
         task_id = 'bash_sleep_36',
-        task_command = 'sleep 36',
+        bash_command = 'sleep 36',
     )
     bash_go = BashOperator(
         task_id = 'bash_go',
-        task_command = 'exit 0',
+        bash_command = 'exit 0',
     )
+
 
     bash_sleep_35 >> bash_sleep_36 >> bash_go
