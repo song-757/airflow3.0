@@ -19,11 +19,11 @@ with DAG(
     catchup=False,
     schedule=None,
     dagrun_timeout=timedelta(minutes=1),
-    default_args={
+    default_args={                         
         'execution_timeout': timedelta(seconds=40),
         'email_on_failure': True,
         'email' : email_list
-    }
+    } 
 ) as dag:
     bash_sleep_35 = BashOperator(
         task_id = 'bash_sleep_35',
