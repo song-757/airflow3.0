@@ -20,7 +20,7 @@ with DAG(
     bash_task = BashOperator(
         task_id = 'bash_task',
         outlets=[dataset_dags_dataset_producer_1],
-        bash_command='echo {{ ti.run.id}} && echo "producer1 와 producer2 완료되면 실행"'
+        bash_command='echo {{ run_id }} && echo "producer1 와 producer2 완료되면 실행"'
     )
 
    
