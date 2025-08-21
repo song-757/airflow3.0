@@ -27,13 +27,13 @@ with DAG(
 ) as dag:
     bash_sleep_30 = BashOperator(
         task_id = 'bash_sleep_30',
-        task_command = 'sleep 30',
+        bash_command = 'sleep 30',
     )
 
     bash_sleep_10 = BashOperator(
         trigger_rule= 'all_done',
         task_id = 'bash_sleep_10',
-        task_command = 'sleep 10',
+        bash_command = 'sleep 10',
     )
 
     bash_sleep_30 >> bash_sleep_30
